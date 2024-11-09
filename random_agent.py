@@ -31,7 +31,7 @@ class RandomAgent:
                             for c1 in range(BOARD_SIZE):
                                 if game.board[r1][c1] == EMPTY:
                                     moves.append((r0, c0, r1, c1))
-        return moves
+        return moves    
         
     def get_best_move(self, game):
         """Returns a random valid move."""
