@@ -3,6 +3,8 @@ from PushBattle import Game, PLAYER1, PLAYER2, EMPTY, BOARD_SIZE, NUM_PIECES, _t
 
 # Import This
 # from <AGENT FILENAME> import <AGENT CLASSNAME>
+from agent import Agent
+from random_agent import RandomAgent
 
 app = Flask(__name__)
 
@@ -32,10 +34,11 @@ def start_game():
 
     ##### MODIFY BELOW #####
 
-    # agent = RandomAgent()
+    agent = RandomAgent()
 
     ###################
-    
+    agent = Agent(player=PLAYER1 if first_turn else PLAYER2)
+
     return jsonify({
         "message": "Game started successfully"
     })
@@ -79,7 +82,8 @@ def make_move():
     # move = agent.get_best_move(game)
 
     ###################
-    
+    move = agent.get_best_move(game)
+
     return jsonify({
         "move": move  # Return your chosen move
     })
